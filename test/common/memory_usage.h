@@ -159,14 +159,14 @@ namespace utils {
     inline long long getSystemTHPAllocatedSize() {
         long long anonHugePagesSize = 0;
         parseFileItem meminfoItems[] = {
-            { "AnonHugePages: %llu kB", anonHugePagesSize } };
+            { "AnonHugePages: %lld kB", anonHugePagesSize } };
         parseFile</*BUFF_SIZE=*/100>("/proc/meminfo", meminfoItems);
         return anonHugePagesSize;
     }
     inline long long getSystemTHPCount() {
         long long anonHugePages = 0;
         parseFileItem vmstatItems[] = {
-            { "nr_anon_transparent_hugepages %llu", anonHugePages } };
+            { "nr_anon_transparent_hugepages %lld", anonHugePages } };
         parseFile</*BUFF_SIZE=*/100>("/proc/vmstat", vmstatItems);
         return anonHugePages;
     }
